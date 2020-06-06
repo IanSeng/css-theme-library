@@ -49,6 +49,7 @@ jobs:
       - name: Update and push
         run: |
           npm version patch
+          git status
           git add . 
           git commit -m "package version patch"
           git push "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
