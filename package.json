@@ -1,0 +1,26 @@
+{
+  "name": "@ianseng/css-theme-library",
+  "version": "1.0.1",
+  "description": "css theme library ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IanSeng/css-theme-library.git"
+  },
+  "keywords": [
+    "css",
+    "library"
+  ],
+  "author": "ianseng <ianseng@outlook.com> (ianseng.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IanSeng/css-theme-library/issues"
+  },
+  "homepage": "https://github.com/IanSeng/css-theme-library#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
