@@ -41,5 +41,5 @@ jobs:
         run: |
           npm --no-git-tag-version version patch
           git add . 
-          got commit 
+          git commit 
           git push "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
