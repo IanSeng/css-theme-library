@@ -9,32 +9,21 @@ on:
       - feat/git-workflow
 
 jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2push:
-#     branches: 
-#       - master
-#       - uses: actions/setup-node@v1
-#         with:
-#           node-version: 12
-#       - run: npm ci
-#       - run: npm test
 
-  # publish-gpr:
-  #   needs: version-patch
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #         registry-url: https://npm.pkg.github.com/
-  #     - run: npm publish
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
+  publish-gpr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
 
   version-patch:
+    needs: publish-gpr
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2
@@ -46,10 +35,11 @@ jobs:
           git checkout feat/git-workflow
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config user.name "$GITHUB_ACTOR"
+      - name: Create a release tag 
+          git push --follow-tags "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
       - name: Update and push
         run: |
-          npm version patch
+          npm version patch --no-git-tag-version
           git status
           git add . 
-        
-          git push --follow-tags "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
+          git push "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
