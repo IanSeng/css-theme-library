@@ -35,8 +35,9 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
       - name: Create a release tag 
         run: |
-          CURRENT_VERSION = $(cat package.json \ | grep \"version\" \ | head -1 \  | awk -F: '{ print $2 }' \ | sed 's/[",]//g' \| tr -d '[[:space:]]')
-          git tag CURRENT_VERSION
+          CURRENT_VERSION=$(cat package.json \ | grep \"version\" \ | head -1 \  | awk -F: '{ print $2 }' \ | sed 's/[",]//g' \| tr -d '[[:space:]]')
+          PACKAGE_VERSION=$(cat package.json \ | grep \"version\" \| head -1 \ | awk -F: '{ print $2 }' \ | sed 's/[",]//g' \ | tr -d '[[:space:]]')
+          git tag PACKAGE_VERSION
           git push --tags "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"     
       - name: Create next iteration and push
         run: |

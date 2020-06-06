@@ -1,6 +1,6 @@
 {
   "name": "@ianseng/css-theme-library",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "css theme library ",
   "main": "index.js",
   "scripts": {
