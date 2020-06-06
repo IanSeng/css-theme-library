@@ -39,7 +39,7 @@ jobs:
         run: git push --follow-tags "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
       - name: Update and push
         run: |
-          npm version patch --no-git-tag-version
-          git status
+          npm --no-git-tag-version version patch
           git add . 
+          got commit 
           git push "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
