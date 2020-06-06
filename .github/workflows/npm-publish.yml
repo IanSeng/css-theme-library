@@ -52,4 +52,4 @@ jobs:
           git status
           git add . 
           git commit -m "package version patch"
-          git push "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
+          git push --tags "https://$GITHUB_ACTOR:${{secrets.GPR_TOKEN}}@github.com/$GITHUB_REPOSITORY"
