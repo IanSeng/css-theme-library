@@ -3,9 +3,9 @@
 name: Node.js Package
 
 on:
-  push:
-    branches: 
-      - feat/git-workflow
+  pull_request:
+    branches:
+      - master
 
 jobs:
   publish-gpr:
@@ -30,7 +30,7 @@ jobs:
           node-version: 12
       - name: Setup GIT 
         run: |
-          git checkout feat/git-workflow
+          git checkout master
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config user.name "$GITHUB_ACTOR"
       - name: Create a release tag 
