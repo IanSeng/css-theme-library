@@ -43,7 +43,7 @@ jobs:
           node-version: 12
       - name: Setup GIT 
         run: |
-          git switch -c feat/git-workflow
+          git checkout feat/git-workflow
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config user.name "$GITHUB_ACTOR"
       - name: Update and push
