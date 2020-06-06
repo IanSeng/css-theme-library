@@ -30,7 +30,7 @@ jobs:
           node-version: 12
       - name: Setup GIT 
         run: |
-          git switch -c master
+          git checkout master
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config user.name "$GITHUB_ACTOR"
       - name: Create a release tag 
